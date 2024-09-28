@@ -15,6 +15,8 @@ PORT="8080"
 
 Run the server:
 
+helloo
+
 ```bash
 go build -o notely && ./notely
 ```
