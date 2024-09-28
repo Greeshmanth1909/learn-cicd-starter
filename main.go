@@ -7,7 +7,7 @@ import (
 	"log"
 	"net/http"
 	"os"
-    "time"
+	"time"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
@@ -25,7 +25,7 @@ type apiConfig struct {
 //go:embed static/*
 var staticFiles embed.FS
 
-func main(){
+func main() {
 	err := godotenv.Load(".env")
 	if err != nil {
 		log.Printf("warning: assuming default configuration. .env unreadable: %v", err)
@@ -88,12 +88,12 @@ func main(){
 
 	v1Router.Get("/healthz", handlerReadiness)
 
-    dur, _ := time.ParseDuration("2m")
+	dur, _ := time.ParseDuration("2m")
 	router.Mount("/v1", v1Router)
 	srv := &http.Server{
-		Addr:    ":" + port,
-		Handler: router,
-        ReadHeaderTimeout: dur,
+		Addr:              ":" + port,
+		Handler:           router,
+		ReadHeaderTimeout: dur,
 	}
 
 	log.Printf("Serving on port: %s\n", port)
